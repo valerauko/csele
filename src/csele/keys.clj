@@ -12,7 +12,7 @@
   "Generates raw keys with the given strength."
   [^Integer strength]
   (let [generator (doto (KeyPairGenerator/getInstance "RSA")
-                    (.initialize strength))]
+                        (.initialize strength))]
     (.generateKeyPair generator)))
 
 (defn string-to-key
