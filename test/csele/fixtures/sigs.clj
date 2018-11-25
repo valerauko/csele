@@ -1,0 +1,4 @@
+(ns csele.fixtures.sigs)
+
+(def foo-correct-signature
+  "r4P5jRxIKIEn1UBJKoDqvrHzUzQj6EHRYzAE/btjYScxqLHB2JBY3/KxQxUhDWGs4Xt9Zxw7L3L1v5M8SfA1dkUm8gj5eVJh7EctHvIfoQGJq6Z291KnjNKV7XbMpwbGMhIhSxdBVCZAS+mUFAG7jupjDWn8F02ojuLjr96LZdc=")
