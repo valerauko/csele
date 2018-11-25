@@ -18,7 +18,7 @@
 (defn hash-base64
   "Base64 encoded SHA-256 hash of input."
   [input]
-  (if (instance? InputStream input) (.reset input))
+  (if (instance? InputStream input) (.reset ^InputStream input))
   (let [bytes (bs/to-byte-array input)
         bowel (MessageDigest/getInstance "SHA-256")
         encoder (Base64/getEncoder)]
