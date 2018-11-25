@@ -12,10 +12,10 @@
   "Generates raw keys with the given strength."
   [^Integer strength]
   (let [generator (doto (KeyPairGenerator/getInstance "RSA")
-                    (.initialize strength))]
+                        (.initialize strength))]
     (.generateKeyPair generator)))
 
-(defn ^Key string-to-key
+(defn string-to-key
   "Parses a PEM string into a (public or private) key, whichever it is."
   [input]
   (let [input-key (-> input StringReader. PEMParser. .readObject)]

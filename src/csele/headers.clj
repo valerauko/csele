@@ -31,15 +31,22 @@
     {{actor :actor} :body} :parameters
     :as request}
    input-key]
-  (let [target-headers (split (->> sig-header
-                                   (re-find #"headers=\"([^\"]+)\"")
-                                   second)
-                              #"\s+")
-        signature (->> sig-header
-                       (re-find #"signature=\"([^\"]+)\"")
-                       second)
-        computed-string (sig-string request target-headers)]
-    (sig/verify signature computed-string input-key)))
+  (try
+    (let [target-headers (split (->> sig-header
+                                     (re-find #"headers=\"([^\"]+)\"")
+                                     second)
+                                #"\s+")
+          signature (->> sig-header
+                         (re-find #"signature=\"([^\"]+)\"")
+                         second)
+          computed-string (sig-string request target-headers)]
+      (sig/verify signature computed-string input-key))
+    (catch Exception e
+      ; there are a bunch of reasons this might fail:
+      ; * missing / incorrectly formatted signature header
+      ; * borked key
+      ; * whatever the jvm may come up with
+      nil)))
 
 (defn sign-request
   "Signature string for a Ring request map with the given private key."
