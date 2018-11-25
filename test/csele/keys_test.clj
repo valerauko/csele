@@ -27,3 +27,8 @@
       (is (instance? RSAPublicKey (string-to-key (:public keypair))))
       (is (= (key-to-string test-public) (:public keypair))
           "Should be able to generate the public key from the private key"))))
+
+(deftest salmon-test
+  (let [public-key (:public fix/correct)]
+    (testing "Generates correct magic-public-key from PEM"
+      (is (= (salmon-public-key public-key) fix/salmon)))))
