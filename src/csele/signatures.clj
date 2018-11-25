@@ -12,17 +12,17 @@
 
 (defn verify
   "Expects a base64 encoded signature"
-  [^String signature ^String actual-data public-key]
+  [^String signature actual-data public-key]
   (let [sig (doto (Signature/getInstance algo)
                   (.initVerify ^org.bouncycastle.jce.provider.JCERSAPublicKey
                     (keys/string-to-key public-key))
-                  (.update (.getBytes actual-data)))]
+                  (.update (bs/to-byte-array actual-data)))]
     (.verify sig
       (.decode (Base64/getDecoder) signature))))
 
 (defn sign
   "Produces a base64 encoded signature"
-  [^ByteArrayInputStream data private-key]
+  [data private-key]
   (let [sig (doto (Signature/getInstance algo)
                   (.initSign (keys/string-to-key private-key))
                   (.update (bs/to-byte-array data)))]

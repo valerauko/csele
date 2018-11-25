@@ -1,6 +1,6 @@
 (ns csele.hash
   (:require [byte-streams :as bs])
-  (:import [java.io ByteArrayInputStream]
+  (:import [java.io InputStream]
            [java.util Base64]))
 
 (defn hash-hex
@@ -16,8 +16,8 @@
 
 (defn hash-base64
   "Base64 encoded SHA-256 hash of input."
-  [^ByteArrayInputStream input]
-  (.reset input)
+  [input]
+  (if (instance? InputStream input) (.reset input))
   (let [bytes (bs/to-byte-array input)
         bowel (java.security.MessageDigest/getInstance "SHA-256")
         encoder (Base64/getEncoder)]
