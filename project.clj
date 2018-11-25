@@ -1,4 +1,4 @@
-(defproject social.kitsune/csele "0.4.2"
+(defproject social.kitsune/csele "0.4.3"
   :description "A library to handle ActivityPub-related crypto needs."
   :url "https://kitsune.social"
   :license {:name "Eclipse Public License"
