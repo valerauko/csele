@@ -4,7 +4,8 @@
   (:import [java.security Security Signature]
            [java.io ByteArrayInputStream]
            [java.util Base64]
-           [org.bouncycastle.jce.providee BouncyCastleProvider]))
+           [org.bouncycastle.jce.provider BouncyCastleProvider
+                                          JCERSAPublicKey]))
 
 (Security/addProvider (BouncyCastleProvider.))
 
@@ -14,7 +15,7 @@
   "Expects a base64 encoded signature"
   [^String signature actual-data public-key]
   (let [sig (doto (Signature/getInstance algo)
-                  (.initVerify ^org.bouncycastle.jce.provider.JCERSAPublicKey
+                  (.initVerify ^JCERSAPublicKey
                     (keys/string-to-key public-key))
                   (.update (bs/to-byte-array actual-data)))]
     (.verify sig
