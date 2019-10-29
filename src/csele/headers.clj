@@ -16,7 +16,7 @@
   (join "\n"
     (map
       (fn [header]
-        (str header ": "
+        (str (name header) ": "
              (case header
                "(request-target)" (str (name method) " " path)
                "digest" (str "SHA-256=" (hash-base64 body))
