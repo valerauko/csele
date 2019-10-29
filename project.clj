@@ -7,4 +7,6 @@
                  [commons-codec/commons-codec "1.11"]
                  [org.bouncycastle/bcprov-jdk15on "1.60"]
                  [org.bouncycastle/bcpkix-jdk15on "1.60"]
-                 [byte-streams "0.2.4"]])
+                 [byte-streams "0.2.4"]]
+  :profiles {:dev {:plugins [[lein-ancient "0.6.15"
+                              :exclusions [org.clojure/clojure]]]}})
