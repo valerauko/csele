@@ -1,0 +1,36 @@
+name: Test automation
+
+on:
+  push:
+    branches:
+
+jobs:
+  tests:
+    strategy:
+      matrix:
+        jdk:
+          - 8
+          - 11
+          - 17
+        clojure:
+          - 1.9.0
+          - 1.10.0
+          - 1.10.1
+          - 1.10.2
+          - 1.10.3
+          - 1.11.1
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-java@v2
+        with:
+          java-version: "${{ matrix.jdk }}"
+          distribution: zulu
+          cache: maven
+      - uses: delaguardo/setup-clojure@3.5
+        with:
+          lein: 2.9.5
+      - name: Run tests
+        run: lein with-profile clj${{ matrix.clojure }} test
