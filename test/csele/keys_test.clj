@@ -19,9 +19,9 @@
   (testing "Generates a correct, matching keypair"
     (let [keypair (generate-keypair)
           factory (KeyFactory/getInstance "RSA")
-          test-public (->> (:private keypair)
-                           StringReader. PEMParser. .readObject
-                           .getPublicKeyInfo .getEncoded
+          private (-> (:private keypair)
+                      StringReader. PEMParser. .readObject)
+          test-public (->> ^PEMKeyPair private .getPublicKeyInfo .getEncoded
                            X509EncodedKeySpec. (.generatePublic factory))]
       (is (instance? RSAPrivateKey (string-to-key (:private keypair))))
       (is (instance? RSAPublicKey (string-to-key (:public keypair))))

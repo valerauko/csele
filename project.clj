@@ -11,6 +11,8 @@
                         :username :env/clojars_user
                         :password :env/clojars_token}
   :profiles {:dev {:dependencies [[org.clojure/clojure "1.10.1"]]
+                   :global-vars {*warn-on-reflection* true
+                                 *unchecked-math* :warn-on-boxed}
                    :plugins [[lein-ancient "0.6.15"
                               :exclusions [org.clojure/clojure]]]}
              :clj1.9.0 {:dependencies

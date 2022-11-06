@@ -1,5 +1,6 @@
 (ns csele.keys
   (:import [java.security KeyFactory KeyPair KeyPairGenerator]
+           [java.security.interfaces RSAPublicKey]
            [java.security.spec X509EncodedKeySpec PKCS8EncodedKeySpec]
            [java.io StringReader StringWriter]
            ; REVIEW: maybe it could be done without depending on bc?
@@ -53,7 +54,7 @@
    current federated networks such as Mastodon and Pleroma."
   ; TODO: link spec in docstring if there's one at all
   [^String input]
-  (let [^sun.security.rsa.RSAPublicKeyImpl input-key (string-to-key input)
+  (let [^RSAPublicKey input-key (string-to-key input)
         modulus (-> input-key .getModulus .toByteArray)
         exponent (-> input-key .getPublicExponent .toByteArray)
         encoder (Base64/getUrlEncoder)]
