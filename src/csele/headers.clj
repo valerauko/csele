@@ -27,7 +27,7 @@
 
 (defn verify
   "Verifies the signature of a request."
-  [{{sig-header :signature} :headers
+  [{{sig-header "signature"} :headers
     {{actor :actor} :body} :parameters
     :as request}
    input-key]
