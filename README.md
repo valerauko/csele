@@ -5,7 +5,7 @@ A library to handle ActivityPub-related crypto needs.
 ## Installation
 
 ```
-[social.kitsune/csele "0.5.0"]
+[social.kitsune/csele "0.6.0"]
 ```
 
 ## License
