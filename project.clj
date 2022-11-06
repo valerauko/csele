@@ -7,9 +7,9 @@
                  [org.bouncycastle/bcprov-jdk15on "1.64"]
                  [org.bouncycastle/bcpkix-jdk15on "1.64"]
                  [byte-streams "0.2.4"]]
-  :deploy-repositories {"clojars" {:url "https://repo.clojars.org/"}
-                        :username :env/clojars_user
-                        :password :env/clojars_token}
+  :deploy-repositories {"clojars" {:url "https://repo.clojars.org/"
+                                   :username :env/clojars_user
+                                   :password :env/clojars_token}}
   :profiles {:dev {:dependencies [[org.clojure/clojure "1.10.1"]]
                    :global-vars {*warn-on-reflection* true
                                  *unchecked-math* :warn-on-boxed}
