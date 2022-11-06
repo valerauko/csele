@@ -1,4 +1,4 @@
-# Csele [![Build Status](https://travis-ci.com/valerauko/csele.svg?branch=master)](https://travis-ci.com/valerauko/csele) [![Clojars Project](https://img.shields.io/clojars/v/social.kitsune/csele.svg)](https://clojars.org/social.kitsune/csele)
+# Csele [![Build Status](https://github.com/valerauko/csele/actions/workflows/tests.yaml/badge.svg?event=push)](https://github.com/valerauko/csele/actions) [![Clojars Project](https://img.shields.io/clojars/v/social.kitsune/csele.svg)](https://clojars.org/social.kitsune/csele) [![cljdoc badge](https://cljdoc.org/badge/social.kitsune/csele)](https://cljdoc.org/d/social.kitsune/csele)
 
 A library to handle ActivityPub-related crypto needs.
 
