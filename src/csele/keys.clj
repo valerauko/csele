@@ -44,9 +44,9 @@
    You can set the strength (length) of the key generated. Defaults to 1024."
   ([] (generate-keypair 1024))
   ([strength]
-    (let [^KeyPair keys (raw-keys strength)]
-      {:public (-> keys .getPublic key-to-string)
-       :private (-> keys .getPrivate key-to-string)})))
+   (let [^KeyPair keys (raw-keys strength)]
+     {:public (-> keys .getPublic key-to-string)
+      :private (-> keys .getPrivate key-to-string)})))
 
 (defn salmon-public-key
   "Outputs a public key in the magic-public-key format used for Webfinger in

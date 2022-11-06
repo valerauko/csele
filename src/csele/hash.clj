@@ -10,10 +10,10 @@
   "SHA3 hash of string"
   ([input] (hash-hex input 512))
   ([^String input ^Integer strength]
-    (let [bytes (.getBytes input)
-          sha3 (SHA3$DigestSHA3. strength)]
-      (.update sha3 bytes)
-      (Hex/encodeHexString (.digest sha3)))))
+   (let [bytes (.getBytes input)
+         sha3 (SHA3$DigestSHA3. strength)]
+     (.update sha3 bytes)
+     (Hex/encodeHexString (.digest sha3)))))
 
 (defn hash-base64
   "Base64 encoded SHA-256 hash of input."
