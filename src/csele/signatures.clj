@@ -1,6 +1,6 @@
 (ns csele.signatures
   (:require [csele.keys :as keys]
-            [byte-streams :as bs])
+            [clj-commons.byte-streams :as bs])
   (:import [java.security Security Signature]
            [java.io ByteArrayInputStream]
            [java.util Base64]
