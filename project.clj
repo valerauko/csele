@@ -5,8 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v20.html"}
   :dependencies [[commons-codec/commons-codec "1.15"]
                  [org.bouncycastle/bcprov-jdk15on "1.70"]
-                 [org.bouncycastle/bcpkix-jdk15on "1.70"]
-                 [org.clj-commons/byte-streams "0.3.1"]]
+                 [org.bouncycastle/bcpkix-jdk15on "1.70"]]
   :deploy-repositories {"clojars" {:url "https://repo.clojars.org/"
                                    :username :env/clojars_user
                                    :password :env/clojars_token}}

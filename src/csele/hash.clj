@@ -1,5 +1,5 @@
 (ns csele.hash
-  (:require [clj-commons.byte-streams :as bs])
+  (:require [csele.conversions :refer [->bytes]])
   (:import [java.io InputStream]
            [java.util Base64]
            [java.security MessageDigest]
@@ -9,8 +9,8 @@
 (defn hash-hex
   "SHA3 hash of string"
   ([input] (hash-hex input 512))
-  ([^String input ^Integer strength]
-   (let [bytes (.getBytes input)
+  ([input ^Integer strength]
+   (let [bytes (->bytes input)
          sha3 (SHA3$DigestSHA3. strength)]
      (.update sha3 bytes)
      (Hex/encodeHexString (.digest sha3)))))
@@ -19,7 +19,7 @@
   "Base64 encoded SHA-256 hash of input."
   [input]
   (if (instance? InputStream input) (.reset ^InputStream input))
-  (let [bytes (bs/to-byte-array input)
+  (let [bytes (->bytes input)
         bowel (MessageDigest/getInstance "SHA-256")
         encoder (Base64/getEncoder)]
     (->> bytes

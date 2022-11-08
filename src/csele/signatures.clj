@@ -1,6 +1,6 @@
 (ns csele.signatures
-  (:require [csele.keys :as keys]
-            [clj-commons.byte-streams :as bs])
+  (:require [csele.conversions :refer [->bytes]]
+            [csele.keys :as keys])
   (:import [java.security Security Signature]
            [java.io ByteArrayInputStream]
            [java.util Base64]
@@ -17,7 +17,7 @@
   (let [sig (doto (Signature/getInstance algo)
                   (.initVerify ^JCERSAPublicKey
                     (keys/string-to-key public-key))
-                  (.update (bs/to-byte-array actual-data)))]
+                  (.update (->bytes actual-data)))]
     (.verify sig
       (.decode (Base64/getDecoder) signature))))
 
@@ -26,6 +26,6 @@
   [data private-key]
   (let [sig (doto (Signature/getInstance algo)
                   (.initSign (keys/string-to-key private-key))
-                  (.update (bs/to-byte-array data)))]
+                  (.update (->bytes data)))]
     (.encodeToString (Base64/getEncoder)
       (.sign sig))))
