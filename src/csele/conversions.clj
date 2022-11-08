@@ -13,4 +13,6 @@
   (->bytes [input] (.getBytes input))
 
   InputStream
-  (->bytes [input] (.readAllBytes input)))
+  (->bytes [input]
+    (.reset input)
+    (.readAllBytes input)))
