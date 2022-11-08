@@ -12,7 +12,8 @@
     (is (= (hash-hex "foo" 384) fix/foo-sha3-384))))
 
 (deftest base64-test
-  (let [consumed-input (-> "foo" .getBytes ByteArrayInputStream. ->bytes)]
+  (let [consumed-input (doto (-> "foo" .getBytes ByteArrayInputStream.)
+                             (.readAllBytes))] ;; "consume" the stream, throw away
     (testing "Produces correct base64 hash of input"
       (is (= (hash-base64 "foo") fix/foo-base64)))
     (testing "Works with consumed streams too"
