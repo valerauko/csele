@@ -4,7 +4,7 @@
   <groupId>social.kitsune</groupId>
   <artifactId>csele</artifactId>
   <packaging>jar</packaging>
-  <version>0.6.1</version>
+  <version>0.7.0</version>
   <name>csele</name>
   <description>A library to handle ActivityPub-related crypto needs.</description>
   <url>https://kitsune.social</url>
@@ -18,7 +18,7 @@
     <url>https://github.com/valerauko/csele</url>
     <connection>scm:git:git://github.com/valerauko/csele.git</connection>
     <developerConnection>scm:git:ssh://git@github.com/valerauko/csele.git</developerConnection>
-    <tag>1a7f0debaf731721932e4da8da16c5650eb95d98</tag>
+    <tag>b4019349cfe2fb5bead29a9329538f98a3ab93ba</tag>
   </scm>
   <build>
     <sourceDirectory>src</sourceDirectory>
@@ -77,11 +77,6 @@
       <groupId>org.bouncycastle</groupId>
       <artifactId>bcpkix-jdk15on</artifactId>
       <version>1.70</version>
-    </dependency>
-    <dependency>
-      <groupId>org.clj-commons</groupId>
-      <artifactId>byte-streams</artifactId>
-      <version>0.3.1</version>
     </dependency>
     <dependency>
       <groupId>org.clojure</groupId>
