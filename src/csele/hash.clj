@@ -1,5 +1,5 @@
 (ns csele.hash
-  (:require [byte-streams :as bs])
+  (:require [clj-commons.byte-streams :as bs])
   (:import [java.io InputStream]
            [java.util Base64]
            [java.security MessageDigest]

@@ -3,10 +3,10 @@
   :url "https://kitsune.social"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v20.html"}
-  :dependencies [[commons-codec/commons-codec "1.13"]
-                 [org.bouncycastle/bcprov-jdk15on "1.64"]
-                 [org.bouncycastle/bcpkix-jdk15on "1.64"]
-                 [byte-streams "0.2.4"]]
+  :dependencies [[commons-codec/commons-codec "1.15"]
+                 [org.bouncycastle/bcprov-jdk15on "1.70"]
+                 [org.bouncycastle/bcpkix-jdk15on "1.70"]
+                 [org.clj-commons/byte-streams "0.3.1"]]
   :deploy-repositories {"clojars" {:url "https://repo.clojars.org/"
                                    :username :env/clojars_user
                                    :password :env/clojars_token}}

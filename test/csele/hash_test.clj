@@ -1,6 +1,6 @@
 (ns csele.hash-test
   (:require [clojure.test :refer :all]
-            [byte-streams :as bs]
+            [clj-commons.byte-streams :as bs]
             [csele.fixtures.hash :as fix]
             [csele.hash :refer :all])
   (:import [java.io ByteArrayInputStream]))
