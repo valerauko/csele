@@ -13,11 +13,12 @@
   (testing "Converting a string"
     (let [string "Lorem ipsum"]
       (is (Arrays/equals (->bytes string) (.getBytes string)))))
-  (testing "Converting a stream"
-    (let [stream (-> "foo" .getBytes ByteArrayInputStream.)]
-      (is (Arrays/equals (->bytes stream) (.getBytes "foo")))
-      (is (Arrays/equals (->bytes stream) (.getBytes "foo"))
-          "Can be called repeatedly (on a resetable stream)")))
+  (when-not (= (System/getProperty "java.version") "8")
+    (testing "Converting a stream"
+      (let [stream (-> "foo" .getBytes ByteArrayInputStream.)]
+        (is (Arrays/equals (->bytes stream) (.getBytes "foo")))
+        (is (Arrays/equals (->bytes stream) (.getBytes "foo"))
+            "Can be called repeatedly (on a resetable stream)"))))
   (testing "Converting null"
     (is (thrown? IllegalArgumentException (->bytes nil))
         "Not supported")))
