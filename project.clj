@@ -4,8 +4,8 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v20.html"}
   :dependencies [[commons-codec/commons-codec "1.15"]
-                 [org.bouncycastle/bcprov-jdk15on "1.70"]
-                 [org.bouncycastle/bcpkix-jdk15on "1.70"]]
+                 [org.bouncycastle/bcprov-jdk18on "1.76"]
+                 [org.bouncycastle/bcpkix-jdk18on "1.76"]]
   :deploy-repositories {"clojars" {:url "https://repo.clojars.org/"
                                    :username :env/clojars_user
                                    :password :env/clojars_token}}
