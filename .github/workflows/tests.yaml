@@ -9,7 +9,6 @@ jobs:
     strategy:
       matrix:
         jdk:
-          - 8
           - 11
           - 17
           - 21-ea
