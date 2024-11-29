@@ -9,19 +9,19 @@ jobs:
   clojars:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: crazy-max/ghaction-import-gpg@v5
+      - uses: actions/checkout@v4
+      - uses: crazy-max/ghaction-import-gpg@v6
         with:
           gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
           passphrase: ${{ secrets.GPG_PASSPHRASE }}
-      - uses: actions/setup-java@v3
+      - uses: actions/setup-java@v4
         with:
-          java-version: 17
+          java-version: 21
           distribution: temurin
           cache: maven
       - uses: delaguardo/setup-clojure@9.5
         with:
-          lein: 2.9.5
+          lein: 2.11.2
       - run: lein deploy clojars
         env:
           CLOJARS_USER: valerauko
