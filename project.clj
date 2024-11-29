@@ -22,4 +22,4 @@
              :clj1.11 {:dependencies
                        [[org.clojure/clojure "1.11.4"]]}
              :clj1.12 {:dependencies
-                       [[org.clojure/clojure "1.11.4"]]}})
+                       [[org.clojure/clojure "1.12.0"]]}})
