@@ -1,0 +1,4 @@
+{
+    "name": "csele",
+    "image": "docker.io/library/clojure:temurin-21-lein-noble"
+}
