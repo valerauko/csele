@@ -1,10 +1,8 @@
 (ns csele.signatures-test
   (:require [clojure.test :refer :all]
-            [clojure.string :as str]
             [csele.fixtures.sigs :as sigs]
             [csele.fixtures.keys :as keys]
-            [csele.signatures :refer :all])
-  (:import [java.io ByteArrayInputStream]))
+            [csele.signatures :refer :all]))
 
 (deftest sign-test
   (let [private-key (:private keys/correct)

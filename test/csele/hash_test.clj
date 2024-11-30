@@ -1,6 +1,5 @@
 (ns csele.hash-test
   (:require [clojure.test :refer :all]
-            [csele.conversions :refer [->bytes]]
             [csele.fixtures.hash :as fix]
             [csele.hash :refer :all])
   (:import [java.io ByteArrayInputStream]))
@@ -13,7 +12,7 @@
 
 (deftest base64-test
   (let [consumed-input (doto (-> "foo" .getBytes ByteArrayInputStream.)
-                             (.readAllBytes))] ;; "consume" the stream, throw away
+                         (.readAllBytes))] ;; "consume" the stream, throw away
     (testing "Produces correct base64 hash of input"
       (is (= (hash-base64 "foo") fix/foo-base64)))
     (testing "Works with consumed streams too"

@@ -6,30 +6,29 @@
            ; REVIEW: maybe it could be done without depending on bc?
            [org.bouncycastle.openssl PEMParser PEMWriter PEMKeyPair]
            [org.bouncycastle.asn1.x509 SubjectPublicKeyInfo]
-           [org.bouncycastle.crypto.util PrivateKeyFactory]
            [java.util Base64]))
 
 (defn raw-keys
   "Generates raw keys with the given strength."
   [^Integer strength]
   (let [generator (doto (KeyPairGenerator/getInstance "RSA")
-                        (.initialize strength))]
+                    (.initialize strength))]
     (.generateKeyPair generator)))
 
 (defn string-to-key
   "Parses a PEM string into a (public or private) key, whichever it is."
   [input]
-  (let [input-key (-> input StringReader. PEMParser. .readObject)]
+  (let [input-key (-> input StringReader. PEMParser. .readObject)
+        key-factory (KeyFactory/getInstance "RSA")]
     ; private key: PEMKeyPair
     ; public key: SubjectPublicKeyInfo
-    (let [key-factory (KeyFactory/getInstance "RSA")]
-      (if (instance? PEMKeyPair input-key)
-        (let [bytes (-> ^PEMKeyPair input-key .getPrivateKeyInfo .getEncoded)
-              key-spec (PKCS8EncodedKeySpec. bytes)]
-          (.generatePrivate key-factory key-spec))
-        (let [bytes (.getEncoded ^SubjectPublicKeyInfo input-key)
-              key-spec (X509EncodedKeySpec. bytes)]
-          (.generatePublic key-factory key-spec))))))
+    (if (instance? PEMKeyPair input-key)
+      (let [bytes (-> ^PEMKeyPair input-key .getPrivateKeyInfo .getEncoded)
+            key-spec (PKCS8EncodedKeySpec. bytes)]
+        (.generatePrivate key-factory key-spec))
+      (let [bytes (.getEncoded ^SubjectPublicKeyInfo input-key)
+            key-spec (X509EncodedKeySpec. bytes)]
+        (.generatePublic key-factory key-spec)))))
 
 (defn key-to-string
   "Turns a (public or private) key into a string."

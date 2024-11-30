@@ -2,11 +2,11 @@
   (:require [clojure.test :refer :all]
             [csele.fixtures.keys :as fix]
             [csele.keys :refer :all])
-  (:import [java.io StringReader StringWriter]
+  (:import [java.io StringReader]
            [java.security KeyFactory]
            [java.security.spec X509EncodedKeySpec]
            [java.security.interfaces RSAPublicKey RSAPrivateKey]
-           [org.bouncycastle.openssl PEMParser PEMWriter PEMKeyPair]))
+           [org.bouncycastle.openssl PEMParser PEMKeyPair]))
 
 (deftest conversion-test
   (testing "Key-string conversions are symmetric"

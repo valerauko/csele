@@ -1,7 +1,6 @@
 (ns csele.hash
   (:require [csele.conversions :refer [->bytes]])
-  (:import [java.io InputStream]
-           [java.util Base64]
+  (:import [java.util Base64]
            [java.security MessageDigest]
            [org.apache.commons.codec.binary Hex]
            [org.bouncycastle.jcajce.provider.digest SHA3$DigestSHA3]))
