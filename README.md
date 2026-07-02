@@ -5,7 +5,7 @@ A library to handle ActivityPub-related crypto needs.
 ## Installation
 
 ```
-[social.kitsune/csele "0.7.2"]
+[social.kitsune/csele "0.7.3"]
 ```
 
 Can't use InputStreams as inputs on Java 8.
