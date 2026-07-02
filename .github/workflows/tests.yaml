@@ -31,4 +31,4 @@ jobs:
         with:
           lein: 2.11.2
       - name: Run tests
-        run: lein with-profile clj${{ matrix.clojure }} test
+        run: lein with-profile +clj${{ matrix.clojure }} test
